@@ -1,9 +1,9 @@
 # Ex.No.1---Data-Preprocessing
-##AIM:
+## AIM:
 
 To perform Data preprocessing in a data set downloaded from Kaggle
 
-##REQUIPMENTS REQUIRED:
+## REQUIPMENTS REQUIRED:
 Hardware – PCs
 Anaconda – Python 3.7 Installation / Google Colab /Jupiter Notebook
 
@@ -23,7 +23,7 @@ For achieving better results from the applied model in Machine Learning projects
 Another aspect is that the data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithm are executed in one data set, and best out of them is chosen.
 
 
-##ALGORITHM:
+## ALGORITHM:
 Importing the libraries
 Importing the dataset
 Taking care of missing data
@@ -31,11 +31,44 @@ Encoding categorical data
 Normalizing the data
 Splitting the data into test and train
 
-##PROGRAM:
-/Write your code here/
+## PROGRAM:
+```
+Developed By: Sai Eswar Kandukuri
+Registration Number: 212221240020
+```
+```
+import pandas as pd
+df=pd.read_csv("/content/Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
 
-##OUTPUT:
-/ Show the result/
+## OUTPUT:
+<img width="1025" alt="out1" src="https://user-images.githubusercontent.com/93427011/191894387-97dd022b-f8a0-485f-a6e1-eb43dccafc9d.png">
+<img width="566" alt="out2" src="https://user-images.githubusercontent.com/93427011/191894402-a647f6de-2ff6-4052-9c06-f86521f0bcab.png">
+<img width="540" alt="out3" src="https://user-images.githubusercontent.com/93427011/191894427-e8d67126-fe1b-48a6-be14-e00a53e29d85.png">
+<img width="642" alt="out4" src="https://user-images.githubusercontent.com/93427011/191894437-0e82c57e-db3b-49b0-84bd-a153ec5deff9.png">
 
-##RESULT
-/Type your result here/
+
+## RESULT
+Thus the above program for standardizing the given data was implemented successfully.
